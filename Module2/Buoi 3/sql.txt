@@ -1,0 +1,42 @@
+use hr;
+select *
+from employees 
+where ADDRESS like "%Elgin,IL%";
+
+select *
+from employees
+where year(B_DATE) = 1972;
+
+select *
+from employees
+where salary >= 60000 and salary <= 70000;
+
+select *
+from employees
+order by DEP_ID;
+
+select *
+from employees
+order by DEP_ID  desc, F_NAME  desc;
+
+select DEP_ID, count(*)
+from employees
+group by DEP_ID;
+
+select id, NUM_EMPLOYEES, a.ever / a.NUM_EMPLOYEES as  AVG_SALARY
+from (
+select DEP_ID as id, count(*) as NUM_EMPLOYEES ,sum(SALARY) as ever
+from employees
+group by DEP_ID) as a;
+use hr;
+SELECT * FROM hr.departments;
+SELECT * 
+FROM hr.employees
+order by F_NAME desc
+limit 1;
+SELECT * 
+FROM hr.employees
+where DEP_ID = 3
+order by F_NAME desc
+limit 1;
+
