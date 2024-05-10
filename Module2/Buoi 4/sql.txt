@@ -1,0 +1,27 @@
+use hr;
+-- question1
+select b.F_NAME, b.L_NAME, a.START_DATE, c.JOB_TITLE
+from employees as b, job_history as a, jobs as c
+where b.EMP_ID = a.EMPL_ID and a.JOBS_ID = c.JOB_IDENT and b.DEP_ID = 5;
+-- question2
+select a.EMP_ID, a.L_NAME, a.DEP_ID, b.DEP_NAME
+from employees as a
+left join departments as b
+on a.DEP_ID = b.DEPT_ID_DEP
+where year(a.B_DATE) < 1980;
+-- question3
+select a.EMP_ID, a.L_NAME, a.DEP_ID, b.DEP_NAME
+from employees as a
+inner join departments as b
+on a.DEP_ID = b.DEPT_ID_DEP
+where year(a.B_DATE) < 1980;
+-- question4
+select E.F_NAME,E.L_NAME,D.DEPT_ID_DEP, D.DEP_NAME
+	from EMPLOYEES AS E 
+	LEFT OUTER JOIN DEPARTMENTS AS D ON E.DEP_ID=D.DEPT_ID_DEP and E.SEX = "M"
+UNION ALL
+select E.F_NAME,E.L_NAME,D.DEPT_ID_DEP, D.DEP_NAME
+	from EMPLOYEES AS E 
+	RIGHT OUTER JOIN DEPARTMENTS AS D ON E.DEP_ID=D.DEPT_ID_DEP and E.SEX = "M"
+
+
