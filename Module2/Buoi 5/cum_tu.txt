@@ -1,0 +1,21 @@
+use testing_system_db;
+
+-- 1
+create or replace view nv as
+select *
+from 
+(select 		a.*, d.DepartmentName
+from account as a, department as d
+where           a.DepartmentID = d.DepartmentID) 
+as 				b
+where 			b.DepartmentName = "Sale";
+-- 2
+create view test as
+select 		account.*
+from (
+select 		AccountID, count(*) as t
+from 		groupaccount
+group by	AccountID
+order by 	t desc 
+limit 1) as b, account
+where 		account.AccountID  = b.accountID;
