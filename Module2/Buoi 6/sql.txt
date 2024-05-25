@@ -1,0 +1,20 @@
+DELIMITER // 
+CREATE PROCEDURE deleteGiaTri1(IN giaTri INT) 
+BEGIN 
+  delete from testing_system_db.department
+  where DepartmentID = giatri;
+END // 
+CALL deleteGiaTri1(1);
+
+delimiter $$
+
+create FUNCTION tinhtong (x1 int, x2 int) RETURNS INT
+DETERMINISTIC
+	begin 
+		DECLARE x INT;
+        set x = x1 + x2 ;
+        return x;
+	end $$
+delimiter ;
+
+select tinhtong(1,2);
